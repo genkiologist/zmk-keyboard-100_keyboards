@@ -42,7 +42,7 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-        sensors = <&left_encoder &right_encoder>;
+//        sensors = <&left_encoder &right_encoder>;
 
         Default {
             bindings = <
