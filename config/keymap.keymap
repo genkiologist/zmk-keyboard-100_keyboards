@@ -47,10 +47,10 @@
 
         Default {
             bindings = <
-  &lt 4 Q                       &kp W       &kp E       &kp R        &kp T                &kp Y                        &kp U      &kp I               &kp O         &kp P
-  &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H                        &kp J      &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
-  &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N                        &kp M      &mt LEFT_ALT COMMA  &mt LWIN DOT  &kp BACKSPACE
-  &kp LSHIFT                    &kp LWIN    &kp LALT    &moMHEN 3 0  &mt LCTRL SPACE      &lt_clean 0 INTERNATIONAL_4  &kp LCTRL  &kp LALT            &kp LWIN      &kp LSHIFT
+  &lt 4 Q                       &kp W       &kp E       &kp R        &kp T                &kp Y        &kp U      &kp I               &kp O         &lt 4 P
+  &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H        &kp J      &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
+  &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M      &mt LEFT_ALT COMMA  &mt LWIN DOT  &kp BACKSPACE
+  &kp LSHIFT                    &kp LWIN    &kp LALT    &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &kp LCTRL  &kp LALT            &kp LWIN      &kp LSHIFT
             >;
         };
 
@@ -83,7 +83,7 @@
 
         ShortCut {
             bindings = <
-  &trans             &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_CLR_ALL     &bt BT_NXT         &bt BT_SEL 0           &bt BT_SEL 1         &tog 0
+  &kp LA(LC(LG(Q)))  &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_CLR_ALL     &bt BT_CLR         &bt BT_SEL 0           &bt BT_SEL 1         &tog 0
   &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))      &kp LA(LG(LC(H)))  &kp LA(LG(LC(J)))  &kp LA(LG(LC(K)))      &kp LA(LG(LC(L)))    &kp LA(LG(LC(SEMI)))
   &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &kp LA(LG(LC(SLASH)))
   &trans             &trans             &trans             &trans             &trans                 &trans             &trans             &trans                 &trans               &trans
@@ -275,26 +275,6 @@
             tapping-term-ms = <200>;
         };
 
-        N0_US: N0_US {
-            compatible = "zmk,behavior-mod-morph";
-            label = "N0_US";
-            bindings = <&kp N0>, <&kp INT1>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-            keep-mods = <(MOD_LSFT)>;
-        };
-
-        lt_clean_m: lt_clean_m {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LT_CLEAN_M";
-            bindings = <&mo2_clean_m>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         moMHEN: moMHEN {
             compatible = "zmk,behavior-hold-tap";
             label = "MOMHEN";
@@ -304,18 +284,20 @@
             tapping-term-ms = <200>;
         };
 
-        moHENK: moHENK {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MOHENK";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&HENK>;
-        };
-
         new_behavior: new_behavior {
             compatible = "zmk,behavior-hold-tap";
             label = "NEW_BEHAVIOR";
-            bindings = <&mo2_clean>, <&moHENK>;
+            bindings = <&mo2_clean>, <&HENK>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        moHENK: moHENK {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOHENK";
+            bindings = <&mo2_clean>, <&HENK>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
