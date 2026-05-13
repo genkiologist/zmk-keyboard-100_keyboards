@@ -9,7 +9,13 @@
         zmk,battery = &non_lipo_battery;
     };
 
-    // XSサイズ: 左右5列 × 4行（新規定義）
+    // 元のコードにあったリスナー定義を完全復活
+    pointing_listener: pointing_listener {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+    };
+
+    // 新設: XSサイズ (5x4) のレイアウト定義
     physical_layout_xs: physical_layout_xs {
         compatible = "zmk,physical-layout";
         display-name = "XS Layout (5x4 Split)";
@@ -17,7 +23,7 @@
         transform = <&size_xs_transform>;
     };
 
-    // マトリックス変換の定義
+    // XS用マトリックス変換 (5x4)
     size_xs_transform: keymap_transform_3 {
         compatible = "zmk,matrix-transform";
         columns = <10>;
@@ -30,6 +36,7 @@
         >;
     };
 
+    // 既存トランスフォーム (Sサイズ)
     size_s_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <14>;
@@ -42,31 +49,33 @@
         >;
     };
 
+    // BMP Boost仕様のピン指定 (P0.xx, P1.xx形式)
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         col-gpios
-            = <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL0: Pin 10 (P0.23)
-            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL1: Pin 16 (P1.14)
-            , <&gpio1  0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL2: Pin 11 (P1.00)
-            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL3: Pin 15 (P1.15)
-            , <&gpio1  3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL4: Pin 12 (P1.03)
-            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL5: Pin 14 (P0.10)
-            , <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL6: Pin 13 (P0.09)
+            = <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL0: P0.23 (Pin 10)
+            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL1: P1.14 (Pin 16)
+            , <&gpio1  0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL2: P1.00 (Pin 11)
+            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL3: P1.15 (Pin 15)
+            , <&gpio1  3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL4: P1.03 (Pin 12)
+            , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL5: P0.10 (Pin 14)
+            , <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL6: P0.09 (Pin 13)
             ;
         row-gpios
-            = <&gpio0 21 (GPIO_ACTIVE_HIGH)> // ROW0: Label 21 (P0.21)
-            , <&gpio0  5 (GPIO_ACTIVE_HIGH)> // ROW1: Pin 20 (P0.05)
-            , <&gpio0  0 (GPIO_ACTIVE_HIGH)> // ROW2: Pin 19 (P0.00)
-            , <&gpio0 30 (GPIO_ACTIVE_HIGH)> // ROW3: Pin 18 (P0.30)
-            , <&gpio0  3 (GPIO_ACTIVE_HIGH)> // ROW4: Pin 17 (P0.03)
+            = <&gpio0 21 (GPIO_ACTIVE_HIGH)> // ROW0: P0.21 (Label 21)
+            , <&gpio0  5 (GPIO_ACTIVE_HIGH)> // ROW1: P0.05 (Pin 20)
+            , <&gpio0  0 (GPIO_ACTIVE_HIGH)> // ROW2: P0.00 (Pin 19)
+            , <&gpio0 30 (GPIO_ACTIVE_HIGH)> // ROW3: P0.30 (Pin 18)
+            , <&gpio0  3 (GPIO_ACTIVE_HIGH)> // ROW4: P0.03 (Pin 17)
             ;
         wakeup-source;
     };
 
+    // 元のコードにあった各ノードをすべて復活
     leds {
         compatible = "gpio-leds";
         status_led: status_led {
-            gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>; // Label 8 (P0.08)
             label = "Status LED";
         };
     };
@@ -84,12 +93,14 @@
         status = "disabled";
     };
 
+    // BMP Boost用の非リポ電池管理 (AIN4を使用)
     non_lipo_battery: non_lipo_battery {
         compatible = "zmk,non-lipo-battery";
         io-channels = <&adc 4>;
     };
 };
 
+// BMP Boostドキュメント推奨のSPI設定を復活・維持
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -108,7 +119,7 @@
     };
 };
 
-// 既存のレイアウト（layouts.dtsiで定義済みと想定されるもの）への参照
+// 既存のレイアウトノードへの参照を維持
 &physical_layout_s {
     kscan = <&kscan0>;
     transform = <&size_s_transform>;
