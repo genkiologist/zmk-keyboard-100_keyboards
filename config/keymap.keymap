@@ -12,12 +12,12 @@
 
 &zip_temp_layer {
     excluded-positions = <
-        19 // J:Lbutton
-        20 // K:Mbutton - Scroll Layer
-        21 // L:Rbutton
-        22 // Enter
-        39 // Shift
-        43 // Space-Lctrl
+        16 // J:Lbutton
+        17 // K:Mbutton - Scroll Layer
+        18 // L:Rbutton
+        19 // Enter-shift
+        10 // A-Shift
+        34 // Space-Lctrl
     >;
 
     require-prior-idle-ms = <200>;
@@ -30,7 +30,7 @@
     >;
 
     scroller {
-        layers = <4>;
+        layers = <3>;
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT)
             &zip_xy_to_scroll_mapper
