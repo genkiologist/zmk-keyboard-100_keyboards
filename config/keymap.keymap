@@ -42,71 +42,52 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-//        sensors = <&left_encoder &right_encoder>;
+
+        //        sensors = <&left_encoder &right_encoder>;
 
         Default {
             bindings = <
-&lt 5 Q                       &kp W       &kp E       &kp R               &kp T                            &kp Y                        &kp U      &kp I               &kp O         &kp P                                 
-&mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F               &kp G                            &kp H                        &kp J      &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER  
-&kp Z                         &hm LWIN X  &hm LALT C  &kp V               &kp B              &kp N                        &kp M      &mt LEFT_ALT COMMA  &mt LWIN DOT  &kp BACKSPACE                         
-&kp LSHIFT                    &kp LWIN    &kp LALT    &lt 4 INT_MUHENKAN  &mt LCTRL SPACE    &lt_clean 0 INTERNATIONAL_4  &kp LCTRL  &kp LALT            &kp LWIN      &kp LSHIFT                            
+  &lt 4 Q                       &kp W       &kp E       &kp R        &kp T                &kp Y                        &kp U      &kp I               &kp O         &kp P
+  &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H                        &kp J      &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
+  &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N                        &kp M      &mt LEFT_ALT COMMA  &mt LWIN DOT  &kp BACKSPACE
+  &kp LSHIFT                    &kp LWIN    &kp LALT    &moMHEN 3 0  &mt LCTRL SPACE      &lt_clean 0 INTERNATIONAL_4  &kp LCTRL  &kp LALT            &kp LWIN      &kp LSHIFT
             >;
-
-
-        };
-
-        DefaultM {
-            bindings = <
-  &lt 5 Q       &kp W               &kp E       &kp R             &kp T                                   &kp Y                     &kp U   &kp I               &kp O                 &kp P                                 
-  &hm LSHIFT A  &kp S               &kp D       &kp F             &kp G                                   &kp H                     &kp J   &kp K               &kp L                 &mt_exit_AML_on_tap LEFT_SHIFT ENTER  
-  &kp Z         &hm LEFT_CONTROL X  &hm LALT C  &kp V             &kp B                     &kp N                     &kp M   &mt LEFT_ALT COMMA  &mt LEFT_CONTROL DOT  &kp BACKSPACE                        
- &kp LSHIFT    &trans              &trans      &lt 4 LANGUAGE_2  &mt LEFT_COMMAND SPACE    &lt_clean_m 0 LANGUAGE_1  &trans  &trans              &kp LEFT_ALT          &kp LEFT_CONTROL                      
-            >;
-
-
         };
 
         Mouse {
             bindings = <
-  &none   &none   &none   &none   &none                   &none   &none     &none      &none        &none   
-  &none   &none   &none   &none   &none                   &none   &mkp MB1  &lm 4 MB3  &RightClick  &trans  
- &none   &none   &none   &none   &none     &none   &none     &none      &none        &none   
-  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans     &trans       &trans
+  &none   &none   &none   &none   &none       &none   &none     &none      &none        &none
+  &none   &none   &none   &none   &none       &none   &mkp MB1  &lm 3 MB3  &RightClick  &trans
+  &none   &none   &none   &none   &none       &none   &none     &none      &none        &none
+  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans     &trans       &trans
             >;
-
-
         };
 
         Num {
             bindings = <
-  &kp N1     &kp N2                     &kp N3              &kp N4         &kp N5                         &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UP            &kp BACKSLASH  &kp INTERNATIONAL_3       
-  &kp N6     &kp N7                     &kp N8              &kp N9         &kp N0                         &kp LA(LEFT)      &kp LEFT           &kp DOWN          &kp RIGHT      &mt LEFT_SHIFT LA(RIGHT)  
- &kp SLASH  &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI       &kp EQUAL       &kp LS(INT1)      &alttab            &Malt LEFT_ALT 0  &Mwin LWIN 0   &kp DELETE              
- &trans     &trans                     &trans              &lt 4 LC(F23)  &mt LCTRL TAB   &trans            &trans             &trans            &trans         &trans                
+  &kp N1     &kp N2                     &kp N3              &kp N4         &kp N5             &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UP            &kp BACKSLASH  &kp INTERNATIONAL_3
+  &kp N6     &kp N7                     &kp N8              &kp N9         &kp N0             &kp LA(LEFT)      &kp LEFT           &kp DOWN          &kp RIGHT      &mt LEFT_SHIFT LA(RIGHT)
+  &kp SLASH  &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI       &kp EQUAL          &kp LS(INT1)      &alttab            &Malt LEFT_ALT 0  &Mwin LWIN 0   &kp DELETE
+  &trans     &trans                     &trans              &lt 3 LC(F23)  &mt LCTRL TAB      &trans            &trans             &trans            &trans         &trans
             >;
-
         };
 
         Func {
             bindings = <
-&kp ESCAPE  &kp F2        &kp F3                &kp F4   &kp F5                   &kp HOME           &kp PG_UP        &msc SCRL_UP    &kp PAGE_DOWN    &kp END                   
-&kp F6      &kp F7        &kp F8                &kp F9   &kp F10                  &kp K_APPLICATION  &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_RIGHT  &mt LEFT_SHIFT LS(ENTER)  
-&kp F11     &mt LWIN F12  &mt LALT PAUSE_BREAK  &kp INS  &tog 1    &kp LS(LG(S))      &kp PRINTSCREEN  &kp LEFT_ALT    &kp LWIN         &kp DELETE                
-&trans      &trans        &trans                &trans   &trans    &lt 3 LC(TAB)      &trans           &trans          &trans           &trans                   
+  &kp ESCAPE  &kp F2        &kp F3                &kp F4   &kp F5       &kp HOME           &kp PG_UP        &msc SCRL_UP    &kp PAGE_DOWN    &kp END
+  &kp F6      &kp F7        &kp F8                &kp F9   &kp F10      &kp K_APPLICATION  &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_RIGHT  &mt LEFT_SHIFT LS(ENTER)
+  &kp F11     &mt LWIN F12  &mt LALT PAUSE_BREAK  &kp INS  &kp F1       &kp LS(LG(S))      &kp PRINTSCREEN  &kp LEFT_ALT    &kp LWIN         &kp DELETE
+  &trans      &trans        &trans                &trans   &trans       &lt 2 LC(TAB)      &trans           &trans          &trans           &trans
             >;
-
-
         };
 
         ShortCut {
             bindings = <
-  &trans             &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))                  &bt BT_CLR_ALL     &bt BT_NXT         &bt BT_SEL 0           &bt BT_SEL 1         &tog 1                
-  &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))                  &kp LA(LG(LC(H)))  &kp LA(LG(LC(J)))  &kp LA(LG(LC(K)))      &kp LA(LG(LC(L)))    &kp LA(LG(LC(SEMI)))   
-  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))   &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &kp LA(LG(LC(SLASH))) 
-  &trans             &trans             &trans             &trans             &trans              &trans             &trans             &trans                 &trans               &trans                
+  &trans             &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_CLR_ALL     &bt BT_NXT         &bt BT_SEL 0           &bt BT_SEL 1         &tog 0
+  &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))      &kp LA(LG(LC(H)))  &kp LA(LG(LC(J)))  &kp LA(LG(LC(K)))      &kp LA(LG(LC(L)))    &kp LA(LG(LC(SEMI)))
+  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &kp LA(LG(LC(SLASH)))
+  &trans             &trans             &trans             &trans             &trans                 &trans             &trans             &trans                 &trans               &trans
             >;
-
-
         };
     };
 
@@ -114,8 +95,8 @@
         compatible = "zmk,conditional-layers";
 
         FunctionWin {
-            if-layers = <3 4>;
-            then-layer = <5>;
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
     };
 
@@ -134,7 +115,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&mo 3>,
+                <&mo 2>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LWIN &kp LALT>,
@@ -180,15 +161,29 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&mo 3>,
+                <&mo 2>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LWIN &kp LALT>,
                 <&macro_tap>,
-                <&to 1>,
+                <&to 0>,
                 <&macro_press>;
 
             label = "MO2_CLEAN_M";
+        };
+
+        HENK: HENK {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANGUAGE_1 &kp INTERNATIONAL_4>;
+            label = "HENK";
+        };
+
+        MHEN: MHEN {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANGUAGE_2 &kp INT_MUHENKAN>;
+            label = "MHEN";
         };
     };
 
@@ -294,6 +289,33 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LT_CLEAN_M";
             bindings = <&mo2_clean_m>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        moMHEN: moMHEN {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOMHEN";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&MHEN>;
+
+            tapping-term-ms = <200>;
+        };
+
+        moHENK: moHENK {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOHENK";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&HENK>;
+        };
+
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NEW_BEHAVIOR";
+            bindings = <&mo2_clean>, <&moHENK>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
