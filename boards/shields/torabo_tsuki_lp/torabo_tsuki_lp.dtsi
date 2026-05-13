@@ -53,9 +53,9 @@
             = <&gpio1 3    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //1
             <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //2
             <&gpio1 14   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //3
-            <&gpio1 15   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //4
-            <&gpio0 15   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //5
-            <&gpio1 0    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //6
+            <&gpio0 23   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //4
+            <&gpio1 0   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //5
+            <&gpio0 15    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //6
             <&gpio0 9    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> //0
             
             ;
