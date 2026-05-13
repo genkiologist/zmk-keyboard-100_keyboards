@@ -50,7 +50,7 @@
         compatible = "zmk,kscan-gpio-matrix";
 
         col-gpios
-            =<&gpio0 9    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),> //0
+            =<&gpio0 9    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //0
             <&gpio1 3    (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //1
             <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //2
             <&gpio1 14   (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //3
