@@ -109,13 +109,6 @@
         compatible = "zmk,non-lipo-battery";
         io-channels = <&adc 4>; 
     };
-    
-    physical_layout_xs: physical_layout_xs {
-        compatible = "zmk,physical-layout";
-        display-name = "XS Layout";
-        kscan = <&kscan0>;
-        transform = <&size_xs_transform>;
-    };
 };
 
 &pinctrl {
@@ -175,4 +168,10 @@
     display-name = "L Layout";
     kscan = <&kscan0>;
     transform = <&size_l_transform>;
+
+&physical_layout_xs {
+    compatible = "zmk,physical-layout";
+    display-name = "XS Layout";
+    kscan = <&kscan0>;
+    transform = <&size_xs_transform>;
 };
