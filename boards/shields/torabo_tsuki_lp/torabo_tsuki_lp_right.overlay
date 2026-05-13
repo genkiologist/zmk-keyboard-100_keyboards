@@ -6,6 +6,10 @@
     input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 };
 
+&size_xs_transform {
+    col-offset = <7>;
+};
+
 &size_s_transform {
     col-offset = <7>;
 };
