@@ -168,6 +168,7 @@
     display-name = "L Layout";
     kscan = <&kscan0>;
     transform = <&size_l_transform>;
+};
 
 &physical_layout_xs {
     compatible = "zmk,physical-layout";
