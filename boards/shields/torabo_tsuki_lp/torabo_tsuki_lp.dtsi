@@ -4,20 +4,25 @@
 
 / {
     chosen {
-        // デフォルトでXSサイズ（5x4）を使用
         zmk,physical-layout = &physical_layout_xs;
         zmk,kscan = &kscan0;
         zmk,battery = &non_lipo_battery;
     };
 
-    // XSサイズ：左右5列 × 4行（計40キー）
-    // 右手側も左から右へ列番号が増える（ミラー反転なし）
+    // XSサイズ: 左右5列 × 4行（新規定義）
+    physical_layout_xs: physical_layout_xs {
+        compatible = "zmk,physical-layout";
+        display-name = "XS Layout (5x4 Split)";
+        kscan = <&kscan0>;
+        transform = <&size_xs_transform>;
+    };
+
+    // マトリックス変換の定義
     size_xs_transform: keymap_transform_3 {
         compatible = "zmk,matrix-transform";
-        columns = <10>; // 5列 + 5列
+        columns = <10>;
         rows = <4>;
         map = <
-            // 左手側 (物理COL 0-4)              右手側 (物理COL 0-4 が RC 5-9に対応)
             RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)    RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9)
             RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)    RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9)
             RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)    RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9)
@@ -25,7 +30,6 @@
         >;
     };
 
-    // 既存のトランスフォーム（互換性のために保持、ただしkscanのピンはBMP Boost仕様）
     size_s_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <14>;
@@ -40,8 +44,6 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-
-        // BMP Boostのピン配置表に基づき、物理ピン番号をGPIOに変換
         col-gpios
             = <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL0: Pin 10 (P0.23)
             , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL1: Pin 16 (P1.14)
@@ -51,23 +53,20 @@
             , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL5: Pin 14 (P0.10)
             , <&gpio0  9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL6: Pin 13 (P0.09)
             ;
-
         row-gpios
-            // ROW0については注意：物理21番ピンがVCCの場合、&gpio0 21(追加IOラベル21)等への読み替えが必要かもしれません
-            = <&gpio0 21 (GPIO_ACTIVE_HIGH)> // ROW0: Label 21 (P0.21) または物理21相当
+            = <&gpio0 21 (GPIO_ACTIVE_HIGH)> // ROW0: Label 21 (P0.21)
             , <&gpio0  5 (GPIO_ACTIVE_HIGH)> // ROW1: Pin 20 (P0.05)
             , <&gpio0  0 (GPIO_ACTIVE_HIGH)> // ROW2: Pin 19 (P0.00)
             , <&gpio0 30 (GPIO_ACTIVE_HIGH)> // ROW3: Pin 18 (P0.30)
             , <&gpio0  3 (GPIO_ACTIVE_HIGH)> // ROW4: Pin 17 (P0.03)
             ;
-
         wakeup-source;
     };
 
     leds {
         compatible = "gpio-leds";
         status_led: status_led {
-            gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>; // 表のPin 1 (Label 8) を想定
+            gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
             label = "Status LED";
         };
     };
@@ -87,12 +86,11 @@
 
     non_lipo_battery: non_lipo_battery {
         compatible = "zmk,non-lipo-battery";
-        io-channels = <&adc 4>; // BTラベル AIN4
+        io-channels = <&adc 4>;
     };
 };
 
 &pinctrl {
-    // BMP Boostドキュメントの「デバイスツリーの例」に基づくSPI設定
     spi0_default: spi0_default {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
@@ -100,7 +98,6 @@
                     <NRF_PSEL(SPIM_MISO, 0, 21)>;
         };
     };
-
     spi0_sleep: spi0_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
@@ -111,17 +108,18 @@
     };
 };
 
-// 物理レイアウトの定義
-&physical_layout_xs {
-    compatible = "zmk,physical-layout";
-    display-name = "XS Layout (5x4 Split)";
-    kscan = <&kscan0>;
-    transform = <&size_xs_transform>;
-};
-
+// 既存のレイアウト（layouts.dtsiで定義済みと想定されるもの）への参照
 &physical_layout_s {
-    compatible = "zmk,physical-layout";
-    display-name = "S Layout";
     kscan = <&kscan0>;
     transform = <&size_s_transform>;
+};
+
+&physical_layout_m {
+    kscan = <&kscan0>;
+    transform = <&size_m_transform>;
+};
+
+&physical_layout_l {
+    kscan = <&kscan0>;
+    transform = <&size_l_transform>;
 };
