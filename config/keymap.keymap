@@ -23,7 +23,7 @@
     require-prior-idle-ms = <200>;
 };
 
-&trackball_listener {
+&pointing_listener {
     input-processors = <
         &zip_xy_transform (INPUT_TRANSFORM_X_INVERT |INPUT_TRANSFORM_Y_INVERT)
         &zip_temp_layer 2 100000
