@@ -83,9 +83,9 @@
 
         ShortCut {
             bindings = <
-  &kp LA(LC(LG(Q)))  &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_CLR_ALL     &bt BT_CLR         &bt BT_SEL 0           &bt BT_SEL 1         &tog 0
+  &kp LA(LC(LG(Q)))  &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_SEL 4       &bt BT_SEL 3       &bt BT_SEL 2           &bt BT_SEL 1         &bt BT_SEL 0
   &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))      &kp LA(LG(LC(H)))  &kp LA(LG(LC(J)))  &kp LA(LG(LC(K)))      &kp LA(LG(LC(L)))    &kp LA(LG(LC(SEMI)))
-  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &kp LA(LG(LC(SLASH)))
+  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &bt BT_CLR
   &trans             &trans             &trans             &trans             &trans                 &trans             &trans             &trans                 &trans               &trans
             >;
         };
