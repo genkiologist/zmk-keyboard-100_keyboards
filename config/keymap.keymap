@@ -47,10 +47,10 @@
 
         Default {
             bindings = <
-  &lt 4 Q                       &kp W       &kp E       &kp R        &kp T                &kp Y        &kp U      &kp I               &kp O         &lt 4 P
-  &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H        &kp J      &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
-  &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M      &hm LEFT_ALT COMMA  &hm LWIN DOT  &kp BACKSPACE
-  &kp LSHIFT                    &kp LWIN    &kp LALT    &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &kp LCTRL  &kp LALT            &kp LWIN      &kp LSHIFT
+  &mt LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &kp Y        &kp U   &kp I               &kp O         &mt LCTRL P
+  &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H        &kp J   &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
+  &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M   &hm LEFT_ALT COMMA  &hm LWIN DOT  &kp BACKSPACE
+  &trans                        &trans      &trans      &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &trans  &trans              &trans        &trans
             >;
         };
 
@@ -65,19 +65,19 @@
 
         Num {
             bindings = <
-  &kp N1     &kp N2                     &kp N3              &kp N4         &kp N5             &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UP            &kp BACKSLASH  &kp INTERNATIONAL_3
-  &kp N6     &kp N7                     &kp N8              &kp N9         &kp N0             &kp LA(LEFT)      &kp LEFT           &kp DOWN          &kp RIGHT      &mt LEFT_SHIFT LA(RIGHT)
-  &kp SLASH  &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI       &kp EQUAL          &kp LS(INT1)      &alttab            &Malt LEFT_ALT 0  &Mwin LWIN 0   &kp DELETE
-  &trans     &trans                     &trans              &lt 3 LC(F23)  &mt LCTRL TAB      &trans            &trans             &trans            &trans         &trans
+  &hm LCTRL NUMBER_1   &kp N2                     &kp N3              &kp N4         &kp N5             &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UP            &kp BACKSLASH  &hm LCTRL INTERNATIONAL_3
+  &hm LSHIFT NUMBER_6  &kp N7                     &kp N8              &kp N9         &kp N0             &kp LA(LEFT)      &kp LEFT           &kp DOWN          &kp RIGHT      &hm LEFT_SHIFT LA(RIGHT)
+  &kp SLASH            &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI       &kp EQUAL          &kp LS(INT1)      &alttab            &Malt LEFT_ALT 0  &Mwin LWIN 0   &kp DELETE
+  &trans               &trans                     &trans              &lt 3 LC(F23)  &mt LCTRL TAB      &trans            &trans             &trans            &trans         &trans
             >;
         };
 
         Func {
             bindings = <
-  &kp ESCAPE  &kp F2        &kp F3                &kp F4   &kp F5       &kp HOME           &kp PG_UP        &msc SCRL_UP    &kp PAGE_DOWN    &kp END
-  &kp F6      &kp F7        &kp F8                &kp F9   &kp F10      &kp K_APPLICATION  &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_RIGHT  &mt LEFT_SHIFT LS(ENTER)
-  &kp F11     &mt LWIN F12  &mt LALT PAUSE_BREAK  &kp INS  &kp F1       &kp LS(LG(S))      &kp PRINTSCREEN  &kp LEFT_ALT    &kp LWIN         &kp DELETE
-  &trans      &trans        &trans                &trans   &trans       &lt 2 LC(TAB)      &trans           &trans          &trans           &trans
+  &hm LCTRL F6       &kp F7        &kp F8                &kp F9   &kp F10                    &kp N7  &kp N8  &kp N9             &kp MINUS               &hm LCTRL EQUAL
+  &hm LSHIFT ESCAPE  &kp F2        &kp F3                &kp F4   &kp F5                     &kp N4  &kp N5  &kp N6             &kp SEMI                &hm LSHIFT SINGLE_QUOTE
+  &kp F11            &mt LWIN F12  &mt LALT PRINTSCREEN  &kp INS  &kp F1                     &kp N1  &kp N2  &hm LALT NUMBER_3  &hm LWIN K_APPLICATION  &kp FSLH
+  &trans             &trans        &trans                &trans   &hm LCTRL PAUSE_BREAK      &kp N0  &trans  &trans             &trans                  &trans
             >;
         };
 
