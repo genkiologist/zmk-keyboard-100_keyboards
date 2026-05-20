@@ -21,7 +21,7 @@
 &size_l_transform {
     col-offset = <7>;
 };
-/ {
+&{/} {
     encoder_right: encoder_right {
         compatible = "alps,ec11";
         a-gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
@@ -30,8 +30,8 @@
         steps = <1>;
         status = "okay";
     };
+};
 
-    chosen {
-        zmk,sensors = <&encoder_right>;
-    };
+&chosen {
+    zmk,sensors = <&encoder_right>;
 };
