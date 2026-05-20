@@ -61,5 +61,11 @@
       ]
     }
   },
-  "sensors": []
+  "sensors": [
+      {
+    "name": "Encoder",
+    "x": 14,
+    "y": 4
+  }
+  ]
 }
