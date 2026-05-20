@@ -7,6 +7,7 @@
         zmk,physical-layout = &physical_layout_xs;
         zmk,kscan = &kscan0;
         zmk,battery = &non_lipo_battery;
+        zmk,sensors = &encoder0;
     };
 
     size_xs_transform: keymap_transform_3 {
@@ -77,6 +78,15 @@
         ;
 
         wakeup-source;
+    };
+
+    encoder0: encoder_0 {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+        b-gpios = <&gpio0 21 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+
+        steps = <4>;
+        status = "okay";
     };
 
     leds {
