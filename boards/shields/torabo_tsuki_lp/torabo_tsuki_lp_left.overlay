@@ -19,6 +19,8 @@
     };
 };
 
-&chosen {
-    zmk,sensors = <&encoder_left>;
+/ {
+    chosen {
+        zmk,sensors = <&encoder_left>;
+    };
 };
