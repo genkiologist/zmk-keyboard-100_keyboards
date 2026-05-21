@@ -42,7 +42,6 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-        compatible = "zmk,keymap-sensors";    
 
         Default {
             bindings = <
