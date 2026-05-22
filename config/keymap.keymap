@@ -50,8 +50,10 @@
   &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M   &hm LEFT_ALT COMMA  &hm LWIN DOT  &kp BACKSPACE
   &trans                        &trans      &trans      &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &trans  &trans              &trans        &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C D>;
+        sensor-bindings = <
+            &inc_dec_kp UP DOWN
+            &inc_dec_kp PG_UP PG_DN
+            >;
         };
 
         Mouse {
@@ -61,7 +63,10 @@
   &none   &none   &none   &none   &none       &none   &none     &none      &none        &none
   &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans     &trans       &trans
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>;
+        sensor-bindings = <
+            &inc_dec_kp UP DOWN
+            &inc_dec_kp PG_UP PG_DN
+            >;
         };
 
         Num {
@@ -71,7 +76,10 @@
   &kp SLASH            &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI       &kp EQUAL          &kp LS(INT1)      &alttab            &Malt LEFT_ALT 0  &Mwin LWIN 0   &kp DELETE
   &trans               &trans                     &trans              &lt 3 LC(F23)  &mt LCTRL TAB      &trans            &trans             &trans            &trans         &trans
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>;
+        sensor-bindings = <
+            &inc_dec_kp UP DOWN
+            &inc_dec_kp PG_UP PG_DN
+            >;
         };
 
         Func {
@@ -81,7 +89,10 @@
   &kp F11            &mt LWIN F12  &mt LALT PRINTSCREEN  &kp INS  &kp F1                     &kp N1  &kp N2  &hm LALT NUMBER_3  &hm LWIN K_APPLICATION  &kp FSLH
   &trans             &trans        &trans                &trans   &hm LCTRL PAUSE_BREAK      &kp N0  &trans  &trans             &trans                  &trans
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>;
+        sensor-bindings = <
+            &inc_dec_kp UP DOWN
+            &inc_dec_kp PG_UP PG_DN
+            >;
         };
 
         ShortCut {
@@ -91,7 +102,10 @@
   &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &bt BT_CLR
   &trans             &trans             &trans             &trans             &trans                 &trans             &trans             &trans                 &trans               &trans
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>;
+         sensor-bindings = <
+            &inc_dec_kp UP DOWN
+            &inc_dec_kp PG_UP PG_DN
+            >;
         };
     };
 
