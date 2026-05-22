@@ -4,23 +4,11 @@
 
 &pointing_listener {
     input-processors = <
-        &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
+        &zip_xy_transform
+        (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
     >;
 };
 
-&{/} {
-    encoder_left: encoder_left {
-        compatible = "alps,ec11";
-        a-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
-        b-gpios = <&gpio0 21 GPIO_ACTIVE_LOW>;
-
-        steps = <1>;
-        status = "okay";
-    };
-};
-
-/ {
-    chosen {
-        zmk,sensors = <&encoder_left>;
-    };
+&encoder_left {
+    status = "okay";
 };

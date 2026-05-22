@@ -3,6 +3,14 @@
 #include "torabo_tsuki_lp_layouts.dtsi"
 
 / {
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder_left &encoder_right>;
+        triggers-per-rotation = <10>;
+    };
+};
+
+/ {
     chosen {
         zmk,physical-layout = &physical_layout_xs;
         zmk,kscan = &kscan0;
@@ -78,6 +86,22 @@
 
         wakeup-source;
     };
+    
+    encoder_left: encoder_left {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0 21 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        steps = <12>;
+        status = "disabled";
+    };
+
+    encoder_right: encoder_right {
+        compatible = "alps,ec11";
+        a-gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0 21 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        steps = <12>;
+        status = "disabled";
+    };
 
     leds {
         compatible = "gpio-leds";
@@ -146,8 +170,6 @@
         };
     };
 };
-
-// trackball and trackpad are defined in the snippets
 
 &physical_layout_s {
     compatible = "zmk,physical-layout";
