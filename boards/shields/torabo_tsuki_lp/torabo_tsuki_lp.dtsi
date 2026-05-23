@@ -15,6 +15,7 @@
         zmk,physical-layout = &physical_layout_xs;
         zmk,kscan = &kscan0;
         zmk,battery = &non_lipo_battery;
+        zmk,sensors = <&encoder_left &encoder_right>;
     };
 
     size_xs_transform: keymap_transform_3 {
@@ -92,7 +93,7 @@
         a-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <12>;
-        status = "disabled";
+        status = "okay";
     };
 
     encoder_right: encoder_right {
@@ -100,7 +101,7 @@
         a-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <12>;
-        status = "disabled";
+        status = "okay";
     };
 
     leds {
