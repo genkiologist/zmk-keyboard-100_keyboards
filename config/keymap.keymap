@@ -45,7 +45,7 @@
 
         Default {
             bindings = <
-  &mt LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &lt 5 Y      &kp U   &kp I               &kp O         &mt LCTRL P
+  &hm LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &lt 5 Y      &kp U   &kp I               &kp O         &hm LCTRL P
   &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H        &kp J   &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
   &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M   &hm LEFT_ALT COMMA  &hm LWIN DOT  &kp BACKSPACE
   &trans                        &trans      &trans      &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &trans  &trans              &trans        &trans
