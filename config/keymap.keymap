@@ -45,12 +45,13 @@
 
         Default {
             bindings = <
-  &mt LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &kp Y        &kp U   &kp I               &kp O         &mt LCTRL P
+  &mt LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &lt 5 Y      &kp U   &kp I               &kp O         &mt LCTRL P
   &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H        &kp J   &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
   &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M   &hm LEFT_ALT COMMA  &hm LWIN DOT  &kp BACKSPACE
   &trans                        &trans      &trans      &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &trans  &trans              &trans        &trans
             >;
-        sensor-bindings = <
+
+            sensor-bindings = <
             &inc_dec_kp UP DOWN
             &inc_dec_kp BSPC DEL
             >;
@@ -63,7 +64,8 @@
   &none   &none   &none   &none   &none       &none   &none     &none      &none        &none
   &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans     &trans       &trans
             >;
-        sensor-bindings = <
+
+            sensor-bindings = <
             &inc_dec_kp UP DOWN
             &inc_dec_kp PG_UP PG_DN
             >;
@@ -76,7 +78,8 @@
   &kp SLASH            &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI       &kp EQUAL          &kp LS(INT1)      &alttab            &Malt LEFT_ALT 0  &Mwin LWIN 0   &kp DELETE
   &trans               &trans                     &trans              &lt 3 LC(F23)  &mt LCTRL TAB      &trans            &trans             &trans            &trans         &trans
             >;
-        sensor-bindings = <
+
+            sensor-bindings = <
             &inc_dec_kp UP DOWN
             &inc_dec_kp BSPC DEL
             >;
@@ -89,7 +92,8 @@
   &kp F11            &mt LWIN F12  &mt LALT PRINTSCREEN  &kp INS  &kp F1                     &kp N1  &kp N2  &hm LALT NUMBER_3  &hm LWIN K_APPLICATION  &kp FSLH
   &trans             &trans        &trans                &trans   &hm LCTRL PAUSE_BREAK      &kp N0  &trans  &trans             &trans                  &trans
             >;
-        sensor-bindings = <
+
+            sensor-bindings = <
             &inc_dec_kp UP DOWN
             &inc_dec_kp PG_UP PG_DN
             >;
@@ -102,9 +106,19 @@
   &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &bt BT_CLR
   &trans             &trans             &trans             &trans             &trans                 &trans             &trans             &trans                 &trans               &trans
             >;
-         sensor-bindings = <
+
+            sensor-bindings = <
             &inc_dec_kp UP DOWN
             &inc_dec_kp PG_UP PG_DN
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+  &trans  &trans  &trans  &trans  &trans      &trans         &bt BT_NXT     &bt BT_PRV     &bt BT_CLR     &bt BT_CLR_ALL
+  &trans  &trans  &trans  &trans  &trans      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4
+  &trans  &trans  &trans  &trans  &trans      &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4
+  &trans  &trans  &trans  &trans  &trans      &trans         &trans         &trans         &trans         &trans
             >;
         };
     };
