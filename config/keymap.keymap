@@ -34,9 +34,16 @@
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT)
             &zip_xy_to_scroll_mapper
+            &zip_scroll_snap // 斜めのスクロールを縦横軸にスナップさせる
             &zip_scroll_scaler 1 4 //スクロール速度を1/4にする。n/mにする場合は[n m]と書く。
         >;
     };
+};
+
+&zip_scroll_snap {
+    x-threshold = <5 8>;
+    y-threshold = <8 5>;
+    xy-threshold = <5 8>;
 };
 
 / {
