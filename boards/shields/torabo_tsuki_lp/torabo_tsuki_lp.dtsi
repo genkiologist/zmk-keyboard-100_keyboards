@@ -98,7 +98,7 @@
         layer = <3>;
 
         scale = <1>;
-        scale-div = <4>;
+        scale-div = <8>;
     };
 
     vbatt: vbatt {
