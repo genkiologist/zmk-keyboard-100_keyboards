@@ -15,7 +15,6 @@
         zmk,physical-layout = &physical_layout_xs;
         zmk,kscan = &kscan0;
         zmk,battery = &non_lipo_battery;
-        zmk,sensors = <&encoder_left &encoder_right>;
     };
 
     size_xs_transform: keymap_transform_3 {
@@ -87,6 +86,19 @@
     pointing_listener: pointing_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
+    };
+
+    // central側でのみ有効化する(zmk-input-processor-scroll-inertiaはcentral限定のため)
+    scroll_inertia: scroll_inertia {
+        compatible = "zmk,input-processor-scroll-inertia";
+        #input-processor-cells = <0>;
+        status = "disabled";
+
+        axis = <0>;
+        layer = <3>;
+
+        scale = <1>;
+        scale-div = <4>;
     };
 
     vbatt: vbatt {

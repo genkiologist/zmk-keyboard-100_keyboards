@@ -17,3 +17,7 @@
 &encoder_right {
     status = "okay";
 };
+
+&scroll_inertia {
+    status = "okay";
+};
