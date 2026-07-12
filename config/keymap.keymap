@@ -35,7 +35,7 @@
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT)
             &zip_xy_to_scroll_mapper
             &zip_scroll_snap // 斜めのスクロールを縦横軸にスナップさせる
-            &scroll_inertia // 慣性スクロール(iOS風の減速スクロール)
+            // &scroll_inertia // 慣性スクロール(iOS風の減速スクロール) - 無効化中
             &zip_scroll_scaler 1 8 //スクロール速度を1/8にする。n/mにする場合は[n m]と書く。
         >;
     };
