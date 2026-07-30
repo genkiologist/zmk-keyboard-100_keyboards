@@ -49,18 +49,43 @@
 
 // mtの初期値はhold-preferred(他のキーを押した瞬間にholdが確定する)で、
 // Spaceの直後に文字を打つと意図せずCtrl等が発火しやすいので、hmと同じtap-preferredに統一する
+
 &mt {
     flavor = "tap-preferred";
     quick-tap-ms = <200>;
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        pgup {
+            bindings = <&kp PG_UP>;
+            key-positions = <7 20 35>;
+        };
+
+        pgdn {
+            bindings = <&kp PAGE_DOWN>;
+            key-positions = <20 35 17>;
+        };
+
+        home {
+            bindings = <&kp HOME>;
+            key-positions = <20 35 16>;
+        };
+
+        end {
+            bindings = <&kp END>;
+            key-positions = <20 35 18>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         Default {
             bindings = <
-  &hm LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &lt 5 Y      &kp U   &kp I               &kp O         &hm LCTRL P
+  &hm LCTRL Q                   &kp W       &kp E       &kp R        &kp T                &kp Y        &kp U   &kp I               &kp O         &hm LCTRL P
   &mt_exit_AML_on_tap LSHIFT A  &kp S       &kp D       &kp F        &kp G                &kp H        &kp J   &kp K               &kp L         &mt_exit_AML_on_tap LEFT_SHIFT ENTER
   &kp Z                         &hm LWIN X  &hm LALT C  &kp V        &kp B                &kp N        &kp M   &hm LEFT_ALT COMMA  &hm LWIN DOT  &kp BACKSPACE
   &trans                        &trans      &trans      &moMHEN 3 0  &mt LCTRL SPACE      &moHENK 0 0  &trans  &trans              &trans        &trans
@@ -102,10 +127,10 @@
 
         Func {
             bindings = <
-  &hm LCTRL F6       &kp F7        &kp F8                &kp F9   &kp F10                    &kp N7  &kp N8  &kp N9             &kp MINUS               &hm LCTRL EQUAL
-  &hm LSHIFT ESCAPE  &kp F2        &kp F3                &kp F4   &kp F5                     &kp N4  &kp N5  &kp N6             &kp SEMI                &hm LSHIFT SINGLE_QUOTE
-  &kp F11            &mt LWIN F12  &mt LALT PRINTSCREEN  &kp INS  &kp F1                     &kp N1  &kp N2  &hm LALT NUMBER_3  &hm LWIN K_APPLICATION  &kp FSLH
-  &trans             &trans        &trans                &trans   &hm LCTRL PAUSE_BREAK      &kp N0  &trans  &trans             &trans                  &trans
+  &hm LCTRL F6       &kp F7        &kp F8                &kp F9   &kp F10                    &kp N7    &kp N8  &kp N9             &kp MINUS               &hm LCTRL EQUAL
+  &hm LSHIFT ESCAPE  &kp F2        &kp F3                &kp F4   &kp F5                     &kp N4    &kp N5  &kp N6             &kp SEMI                &hm LSHIFT SINGLE_QUOTE
+  &kp F11            &mt LWIN F12  &mt LALT PRINTSCREEN  &kp INS  &kp F1                     &kp N1    &kp N2  &hm LALT NUMBER_3  &hm LWIN K_APPLICATION  &kp FSLH
+  &trans             &trans        &trans                &trans   &hm LCTRL PAUSE_BREAK      &lt 2 N0  &trans  &trans             &trans                  &trans
             >;
 
             sensor-bindings = <
@@ -116,10 +141,10 @@
 
         ShortCut {
             bindings = <
-  &kp LA(LC(LG(Q)))  &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_SEL 4       &bt BT_SEL 3       &bt BT_SEL 2           &bt BT_SEL 1         &bt BT_SEL 0
-  &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))      &kp LA(LG(LC(H)))  &kp LA(LG(LC(J)))  &kp LA(LG(LC(K)))      &kp LA(LG(LC(L)))    &kp LA(LG(LC(SEMI)))
-  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &kp LA(LG(LC(N)))  &kp LA(LG(LC(M)))  &kp LA(LG(LC(COMMA)))  &kp LA(LG(LC(DOT)))  &bt BT_CLR
-  &trans             &trans             &trans             &trans             &trans                 &trans             &trans             &trans                 &trans               &trans
+  &kp LA(LC(LG(Q)))  &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))      &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4
+  &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4
+  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))      &bootloader    &bt BT_PRV     &bt BT_NXT     &bt BT_CLR     &bt BT_CLR_ALL
+  &trans             &trans             &trans             &trans             &trans                 &trans         &trans         &trans         &trans         &trans
             >;
 
             sensor-bindings = <
@@ -130,10 +155,10 @@
 
         layer_5 {
             bindings = <
-  &trans  &trans  &trans  &trans  &trans      &trans         &sys_reset     &bootloader    &bt BT_CLR     &bt BT_CLR_ALL
-  &trans  &trans  &trans  &trans  &trans      &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4
-  &trans  &trans  &trans  &trans  &trans      &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4
-  &trans  &trans  &trans  &trans  &trans      &trans         &trans         &trans         &trans         &trans
+  &trans  &trans  &trans  &trans  &trans      &trans        &none         &none         &none         &none
+  &trans  &trans  &trans  &trans  &trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+  &trans  &trans  &trans  &trans  &trans      &none         &none         &none         &none         &none
+  &trans  &trans  &trans  &trans  &trans      &trans        &trans        &trans        &trans        &trans
             >;
         };
     };
