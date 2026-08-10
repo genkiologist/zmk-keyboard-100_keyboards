@@ -121,8 +121,8 @@
             bindings = <
   &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
   &none  &hm LCTRL NUMBER_1  &kp N2  &kp N3  &kp N4  &kp N5  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UP  &kp BACKSLASH  &hm LCTRL INTERNATIONAL_3  &none
-  &none  &hm LSHIFT NUMBER_6  &kp N7  &kp N8  &kp N9  &kp N0  &none  &none  &kp LA(LEFT)  &kp LEFT  &kp DOWN  &kp RIGHT  &hm LEFT_SHIFT LA(RIGHT)  &none
-  &none  &kp SLASH  &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI  &kp EQUAL  &none  &none  &kp LS(INT1)  &alttab  &Malt LEFT_ALT 0  &Mwin LWIN 0  &kp DELETE  &none
+  &none  &hm LSHIFT NUMBER_6  &kp N7  &kp N8  &kp N9  &zero_us  &none  &none  &kp LA(LEFT)  &kp LEFT  &kp DOWN  &kp RIGHT  &hm LEFT_SHIFT LA(RIGHT)  &none
+  &none  &kp SLASH  &hm LEFT_WIN SINGLE_QUOTE  &hm LEFT_ALT MINUS  &kp SEMI  &kp EQUAL  &none  &none  &ptt_apple  &alttab  &Malt LEFT_ALT 0  &Mwin LWIN 0  &kp DELETE  &none
   &none  &none  &none  &none  &lt 3 LC(F23)  &mt LCTRL TAB  &none  &none  &trans  &none  &none  &none  &none  &none
             >;
 
@@ -147,11 +147,25 @@
             >;
         };
 
+        // Windowsモード時にNumレイヤーのPTTキー(index 46)だけを&ptt_winへ差し替える専用レイヤー。
+        // ShortCutより前(低いindex)に置くこと。後ろに置くとNum+Funcの&bootloader(ShortCutのindex 46)が
+        // このレイヤーに勝たれてしまい、キーマップからブートローダに入れなくなる
+        PttWin {
+            display-name = "PttWin";
+            bindings = <
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &ptt_win  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
         ShortCut {
             bindings = <
   &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
   &none  &kp LA(LC(LG(Q)))  &kp LA(LG(LC(W)))  &kp LA(LG(LC(E)))  &kp LA(LG(LC(R)))  &kp LA(LG(LC(T)))  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &none
-  &none  &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))  &none  &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
+  &none  &kp LA(LG(LC(A)))  &kp LA(LG(LC(S)))  &kp LA(LG(LC(D)))  &kp LA(LG(LC(F)))  &kp LA(LG(LC(G)))  &none  &none  &bt_win  &bt_mac  &bt_iph  &bt_iphw  &bt_ipad  &none
   &none  &kp LA(LG(LC(Z)))  &kp LA(LG(LC(X)))  &kp LA(LG(LC(C)))  &kp LA(LG(LC(V)))  &kp LA(LG(LC(B)))  &none  &none  &bootloader  &bt BT_PRV  &bt BT_NXT  &bt BT_CLR  &bt BT_CLR_ALL  &none
   &none  &none  &none  &none  &trans  &trans  &none  &none  &trans  &none  &none  &none  &none  &none
             >;
@@ -166,9 +180,22 @@
             bindings = <
   &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
   &none  &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &none  &none  &none
-  &none  &trans  &trans  &trans  &trans  &trans  &none  &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
+  &none  &trans  &trans  &trans  &trans  &trans  &none  &none  &bt_win  &bt_mac  &bt_iph  &bt_iphw  &bt_ipad  &none
   &none  &trans  &trans  &trans  &trans  &trans  &none  &none  &none  &none  &none  &none  &none  &none
   &none  &none  &none  &none  &trans  &trans  &none  &none  &trans  &none  &none  &none  &none  &none
+            >;
+        };
+
+        // OSモード(Windowsかどうか)を保持するだけのフラグ専用レイヤー。BTプロファイル選択マクロがon/offする。
+        // 全66エントリが&transなのでキー解決には一切影響しない
+        OsWin {
+            display-name = "OsWin";
+            bindings = <
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
@@ -178,7 +205,12 @@
 
         FunctionWin {
             if-layers = <2 3>;
-            then-layer = <4>;
+            then-layer = <5>; // PttWinの挿入でShortCutが4->5にずれた
+        };
+
+        PttWinCond {
+            if-layers = <2 7>; // Num + OsWin
+            then-layer = <4>;  // PttWin
         };
     };
 
@@ -188,7 +220,9 @@
             wait-ms = <0>;
             tap-ms = <0>;
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &to 0>;
+            // &toはデフォルト以外の全レイヤーを無効化するため、OsWinフラグまで巻き添えで落ちる。
+            // ここの目的はオートマウスレイヤー(layer 1)から抜けることなので&tog_off 1にする
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &tog_off 1>;
             label = "KP_exit_AML";
         };
 
@@ -202,7 +236,7 @@
                 <&macro_release>,
                 <&kp LWIN &kp LALT>,
                 <&macro_tap>,
-                <&to 0>,
+                <&tog_off 1>, // 元は&to 0。OsWinフラグを落とさないためlayer 1だけを無効化する
                 <&macro_press>;
 
             label = "A_HOLD_MO1_CLEANUP";
@@ -248,7 +282,7 @@
                 <&macro_release>,
                 <&kp LWIN &kp LALT>,
                 <&macro_tap>,
-                <&to 0>,
+                <&tog_off 1>, // 元は&to 0。OsWinフラグを落とさないためlayer 1だけを無効化する
                 <&macro_press>;
 
             label = "MO2_CLEAN_M";
@@ -267,6 +301,71 @@
             bindings = <&kp LANGUAGE_2 &kp INT_MUHENKAN>;
             label = "MHEN";
         };
+
+        // PTT(押している間だけ音声入力)。&macro_pause_for_releaseより前が押下時、後が離し時に走る。
+        // マクロの既定モードはtapなので<&kp LCTRL &kp LCTRL>はControlを2回叩く(Appleの音声入力ショートカット)
+        ptt_apple: ptt_apple {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings =
+                <&kp LCTRL &kp LCTRL>,
+                <&macro_pause_for_release>,
+                <&kp LCTRL &kp LCTRL>;
+
+            label = "PTT_APPLE";
+        };
+
+        // Windowsの音声入力はWin+Hのトグル
+        ptt_win: ptt_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings =
+                <&kp LG(H)>,
+                <&macro_pause_for_release>,
+                <&kp LG(H)>;
+
+            label = "PTT_WIN";
+        };
+
+        // BTプロファイル選択と同時にOSモード(layer 7 = OsWin)を切り替える
+        bt_win: bt_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 0>, <&tog_on 7>;
+            label = "BT_WIN";
+        };
+
+        bt_mac: bt_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 1>, <&tog_off 7>;
+            label = "BT_MAC";
+        };
+
+        bt_iph: bt_iph {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 2>, <&tog_off 7>;
+            label = "BT_IPH";
+        };
+
+        bt_iphw: bt_iphw {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 3>, <&tog_off 7>;
+            label = "BT_IPHW";
+        };
+
+        bt_ipad: bt_ipad {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 4>, <&tog_off 7>;
+            label = "BT_IPAD";
+        };
     };
 
     behaviors {
@@ -284,6 +383,24 @@
             #binding-cells = <1>;
             display-name = "Toggle Layer Off";
             toggle-mode = "off";
+        };
+
+        tog_on: toggle_layer_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer On";
+            toggle-mode = "on";
+        };
+
+        // 素で0、Shift併用で_(JISのアンダースコア)。mods指定のShiftは既定で出力から取り除かれるため、
+        // morph側はLS()で明示的にShiftを載せ直している
+        zero_us: zero_underscore {
+            compatible = "zmk,behavior-mod-morph";
+            label = "ZERO_UNDERSCORE";
+            bindings = <&kp N0>, <&kp LS(INT1)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mt_exit_AML_on_tap: mt_exit_AML_on_tap {
