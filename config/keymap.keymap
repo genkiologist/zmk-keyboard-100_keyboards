@@ -234,9 +234,11 @@
                 <&mo 2>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
+                <&mo 2>, // 押しっぱなしだった&mo 2を明示的に離す(元は&to 0が唯一の解除経路だった)
                 <&kp LWIN &kp LALT>,
                 <&macro_tap>,
                 <&tog_off 1>, // 元は&to 0。OsWinフラグを落とさないためlayer 1だけを無効化する
+                <&tog_off 2>, // 保険。&mo 2のreleaseが効かなくてもNumが残らないようにする
                 <&macro_press>;
 
             label = "A_HOLD_MO1_CLEANUP";
@@ -280,9 +282,11 @@
                 <&mo 2>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
+                <&mo 2>, // 押しっぱなしだった&mo 2を明示的に離す(元は&to 0が唯一の解除経路だった)
                 <&kp LWIN &kp LALT>,
                 <&macro_tap>,
                 <&tog_off 1>, // 元は&to 0。OsWinフラグを落とさないためlayer 1だけを無効化する
+                <&tog_off 2>, // 保険。&mo 2のreleaseが効かなくてもNumが残らないようにする
                 <&macro_press>;
 
             label = "MO2_CLEAN_M";
