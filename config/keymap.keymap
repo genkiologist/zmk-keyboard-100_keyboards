@@ -311,8 +311,11 @@
         ptt_apple: ptt_apple {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms = <40>;
+            // 40msでは macOS が「Control 2回」と認識しなかった（2026-08-12 実機。
+            // OS 側は Control 2回に設定済みであることを defaults で確認済み）。
+            // 80msだと外したときにもう一往復になるので、まず余裕のある100msへ振る
+            wait-ms = <100>;
+            tap-ms = <100>;
             bindings =
                 <&kp LCTRL &kp LCTRL>,
                 <&macro_pause_for_release>,
