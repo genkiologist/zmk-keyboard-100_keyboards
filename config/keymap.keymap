@@ -292,17 +292,22 @@
             label = "MO2_CLEAN_M";
         };
 
+        // Screens（VNC）越しでは iPadOS が LANG1/LANG2 を横取りするため Mac まで降りてこない。
+        // そこで F17（英数）/ F18（かな）も併せて送り、Mac 側の Hammerspoon が JIS のキーコード
+        // （102 = kVK_JIS_Eisu / 104 = kVK_JIS_Kana）に戻す。直結時は英数/かなが二重に発火するが
+        // 冪等なので無害。Windows（AHK）側と Karabiner 側は F17/F18 を使っていない（2026-08-24 確認）。
+        // → 外部脳 4_notes/Screens越しのtorabo-tsuki操作.md
         HENK: HENK {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANGUAGE_1 &kp INTERNATIONAL_4>;
+            bindings = <&kp LANGUAGE_1 &kp INTERNATIONAL_4 &kp F18>;
             label = "HENK";
         };
 
         MHEN: MHEN {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANGUAGE_2 &kp INT_MUHENKAN>;
+            bindings = <&kp LANGUAGE_2 &kp INT_MUHENKAN &kp F17>;
             label = "MHEN";
         };
 
