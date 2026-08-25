@@ -343,18 +343,34 @@
             label = "PTT_WIN";
         };
 
-        // BTプロファイル選択と同時にOSモード(layer 7 = OsWin)を切り替える
+        // BTプロファイル選択と同時にOSモード(layer 7 = OsWin)を切り替える。
+        //
+        // 2026-08-25: モニタ切替(DDC)も同じキーに統合した。F13 は「今使っている機械から
+        // 相手へ画面を渡す」キーで、受け手は Mac / VAIO の両方に置いてある:
+        //   Mac  = ~/.hammerspoon/init.lua の F13 → mac/switch.sh to-vaio
+        //   VAIO = win/switch.ahk の F13 → SwitchToMac()
+        // どちらも「相手へ渡す」なので、同じ F13 で向きが自動的に決まる。
+        //
+        // ⚠️ F13 は必ず &bt BT_SEL より前に送る。後にすると切替先の機械に届いてしまう。
+        // ⚠️ wait-ms は BLE で F13 が届き切るまでの余裕。200 は暫定値で未実測。
+        //    渡した先で画面が動かないなら、まずここを増やす。
+        // ⚠️ 「今いる側」のキーを押すと画面だけ相手に飛ぶ(例: Mac にいるのに bt_mac)。
+        //    復帰は「相手のキー → 相手側で自分のキー」の2手。
+        // ⚠️ VAIO 側は switch.ahk が起動していないと F13 は無視される(害はない)。
+        // → 外部脳 3_projects/monitor-switch/0_README.md
         bt_win: bt_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0>, <&tog_on 7>;
+            wait-ms = <200>;
+            bindings = <&kp F13>, <&bt BT_SEL 0>, <&tog_on 7>;
             label = "BT_WIN";
         };
 
         bt_mac: bt_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1>, <&tog_off 7>;
+            wait-ms = <200>;
+            bindings = <&kp F13>, <&bt BT_SEL 1>, <&tog_off 7>;
             label = "BT_MAC";
         };
 
